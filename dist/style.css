@@ -1,317 +1,257 @@
-/* Reddit Archive App Styles */
+/*
+   New CSS based on the "Reddit Archive Search" style.
+   Replace the entire content of css/main.scss with this code.
+   Note: This replaces the original theme's modular structure (_base, _layout, etc.)
+         with a single set of styles for simplicity in applying the new look.
+*/
 
-.children {
-  margin-left: 20px;
+/* --- Reset / Base --- */
+* {
+    box-sizing: border-box;
 }
-.score {
-  margin-top: auto;
-  margin-bottom: auto;
-  padding-left: 8px;
-  width: 2%;
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light grey background */
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
-.submissionclass {
-  height: auto;
-  background-color: lightgray;
-  margin: 20px 0px 20px 0px;
-  display: flex;
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
 }
-.main {
-  margin-left: 10px;
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 1em;
+    padding-left: 2em;
 }
-.thumbnail {
-  margin-left: auto;
+
+/* --- Links --- */
+a {
+    color: #0079d3; /* Reddit blue */
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
-div#content {
-  width: 80%;
-  margin: auto;
+a:hover {
+    color: #005fa3; /* Darker blue */
+    text-decoration: underline;
 }
-div#highlight {
-  width: 80%;
-  margin: 8px auto 0 auto;
-  background: #fffbe6;
-  color: #856404;
-  border: 1px solid #ffeeba;
-  border-radius: 6px;
-  padding: 4px 18px;
-  font-size: 15px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+
+/* --- Header --- */
+.site-header {
+    background-color: #cee3f8; /* Light blue background */
+    padding: 15px 20px;
+    border-bottom: 1px solid #ccc;
 }
-div#comments_fix {
-  width: 80%;
-  margin: auto;
+
+.wrapper { /* Jekyll's common wrapper class */
+    max-width: 850px; /* Slightly wider */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px; /* Add some padding */
+    padding-right: 15px;
 }
-div#orphans {
-  width: 80%;
-  margin: auto;
+
+.site-title {
+    display: block;
+    font-size: 1.8em;
+    color: #333;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2;
 }
-#submission a {
-  font-size: 10px;
+.site-title:hover {
+    color: #005fa3;
+    text-decoration: none;
 }
-#submission .post a {
-  font-size: 1rem;
+
+.site-nav {
+    margin-top: 10px;
 }
-.orphan {
-  background-color: darkgray;
+.site-nav .page-link { /* Jekyll's default nav link class */
+    color: #333;
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 0.95em;
 }
-.posted {
-  font-size: 10px;
+.site-nav .page-link:hover {
+    color: #005fa3;
+    text-decoration: none;
 }
-.thumbnail img {
-  max-width: 400px;
+
+/* --- Main Content Area --- */
+.page-content {
+    flex: 1; /* Allow content to fill available space */
+    padding: 25px 0; /* Vertical padding */
 }
-h3 {
-  margin: 0;
+
+/* Style the main content block within the wrapper */
+.page-content .wrapper > main, /* If main tag exists */
+.page-content .wrapper > div:not(.site-header):not(.site-footer) /* Fallback */
+{
+    background-color: #fff; /* White background for content */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    padding: 25px 30px; /* Padding inside the content box */
+    margin-bottom: 20px; /* Space before footer */
 }
-p.comment_title {
-  font-size: 10px;
+
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+    color: #333;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    line-height: 1.3;
+    font-weight: 600; /* Slightly bolder headings */
 }
-.post {
-  background-color: lightgrey;
-  border: solid;
-  border-width: 1px;
-  margin-bottom: 5px;
-  font-size: 1rem;
+
+/* Page/Post Titles */
+.page-heading, /* Jekyll default */
+.post-header h1,
+.post-title /* Common class */
+{
+    font-size: 1.6em;
+    color: #333;
+    margin-top: 0; /* Remove top margin for main titles */
+    margin-bottom: 0.6em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.4em;
 }
-.post_highlight {
-  background-color: rgb(172, 206, 172);
-  border: solid;
-  border-width: 1px;
-  margin-bottom: 5px;
-  font-size: 1rem;
+
+h2 { font-size: 1.4em; }
+h3 { font-size: 1.2em; }
+h4 { font-size: 1.1em; }
+
+p {
+    margin-top: 0;
+    margin-bottom: 1.2em;
 }
-.searchFlex {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 10px 20px;
-  align-items: end;
-  margin-bottom: 10px;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  background: #f7f7f7;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  padding: 18px 18px 8px 18px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+
+blockquote {
+  color: #666;
+  border-left: 4px solid #e8e8e8;
+  padding-left: 15px;
+  font-size: 1.1em;
+  font-style: italic;
+  margin: 1.5em 0;
 }
-.searchFlex label {
-  display: flex;
-  flex-direction: column;
-  font-weight: 500;
-  margin-bottom: 0;
+
+pre, code {
+  font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9em;
+  border: 1px solid #e8e8e8;
+  background-color: #f7f7f7;
+  border-radius: 3px;
 }
-.searchFlex .label {
-  font-size: 13px;
-  margin-bottom: 2px;
-  color: #333;
+
+code {
+  padding: 1px 5px;
 }
-.searchFlex input,
-.searchFlex select {
-  padding: 4px 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  background: #fff;
-  margin-bottom: 0;
+
+pre {
+  padding: 10px 12px;
+  overflow-x: auto;
 }
-.searchFlex input[type="submit"] {
-  grid-column: 1 / -1;
-  width: 180px;
-  margin: 10px auto 0 auto;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  font-weight: bold;
-  letter-spacing: 1px;
-  transition: background 0.2s;
-}
-.searchFlex input[type="submit"]:hover {
-  background: #0056b3;
-}
-.break {
-  display: none;
-}
-.links {
-  width: 80%;
-  margin: 8px auto 0 auto;
-  display: flex;
-  gap: 18px;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0 18px;
-  background: #f7f7f7;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-.links a {
-  background: none;
-  color: #007bff;
-  border: none;
-  border-radius: 0;
-  text-decoration: underline;
-  font-weight: 500;
-  font-size: 15px;
+pre > code {
+  border: 0;
   padding: 0;
-  margin: 0 2px;
-  transition: color 0.2s;
-  box-shadow: none;
-  display: inline;
-}
-.links a:hover {
-  color: #0056b3;
-  background: none;
-  border: none;
-  text-decoration: underline;
-}
-#error.error {
-  width: 80% !important;
-  margin: 8px auto 0 auto !important;
-  padding: 10px !important;
-  background: #f4f6fa !important;
-  color: #333 !important;
-  border: 1px solid #d3dae6 !important;
-  border-radius: 4px !important;
-  font-size: 14px !important;
-  min-height: 24px !important;
-  max-height: 200px !important;
-  overflow-y: auto !important;
 }
 
-#error.error.error-active {
-  background: #ffdddd !important;
-  color: #a33 !important;
-  border: 1.5px solid #d33 !important;
+
+/* --- Post List / Cards (on homepage) --- */
+.post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Remove default list margin */
 }
 
-#error.error:empty {
-  display: none;
+.post-list li {
+    border: 1px solid #ccc;
+    background-color: #fff; /* Card background */
+    border-radius: 4px;
+    margin-bottom: 25px;
+    padding: 15px 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s ease-in-out;
 }
-.disabled-field {
-  background: #f0f0f0 !important;
-  color: #aaa !important;
-  border: 1px dashed #bbb !important;
-  cursor: not-allowed !important;
-  opacity: 1 !important;
+.post-list li:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08);
 }
-.status-icon.spinner {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  vertical-align: middle;
-  margin-right: 6px;
-  border: 2px solid #bbb;
-  border-top: 2px solid #888;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+
+/* Post title within the list item */
+.post-list .post-link { /* Jekyll default */
+    display: block;
+    font-size: 1.3em;
+    color: #0079d3; /* Blue title */
+    font-weight: 600;
+    margin-bottom: 5px;
+    line-height: 1.3;
 }
-.status-icon {
-  font-size: 16px;
-  margin-right: 6px;
+.post-list .post-link:hover {
+    color: #005fa3;
+    text-decoration: none;
 }
-.status-icon.success {
-  color: green;
+
+/* Post meta data (date) */
+.post-list .post-meta {
+    display: block;
+    font-size: 0.85em;
+    color: #555;
+    margin-bottom: 8px;
 }
-.status-icon.error {
-  color: #c00;
+
+/* Post excerpt */
+.post-list .post-excerpt p { /* Target excerpt paragraph */
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 0; /* Remove margin from last p */
 }
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+
+
+/* --- Single Post Layout --- */
+.post-header { /* Header for a single post page */
+    margin-bottom: 20px;
 }
-.pagination-btn {
-  display: block;
-  margin: 20px auto 0 auto;
-  padding: 8px 24px;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
+.post-content { /* Main content of a single post */
+    margin-top: 20px;
 }
-.pagination-btn:hover {
-  background: #0056b3;
+.post-content h1, .post-content h2, .post-content h3, .post-content h4 {
+    margin-top: 1.8em; /* More space before headings inside posts */
 }
-.pagination-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 18px 0 0 0;
+.post-content > :first-child {
+    margin-top: 0; /* Remove top margin from first element in post content */
 }
-.pagination-link {
-  display: inline-block;
-  text-align: center;
-  font-weight: bold;
-  margin: 0 18px;
-  width: auto;
-  padding: 0;
-  background: none;
-  color: #007bff;
-  border: none;
-  border-radius: 0;
-  font-size: 22px;
-  box-shadow: none;
-  text-decoration: none;
-  transition: color 0.2s;
-  vertical-align: middle;
+
+
+/* --- Footer --- */
+.site-footer {
+    border-top: 1px solid #eee;
+    padding: 20px 0;
+    margin-top: 30px; /* Space above footer */
+    font-size: 0.9em;
+    color: #777;
+    text-align: center;
 }
-.pagination-link:hover {
-  color: #0056b3;
-  text-decoration: underline;
-  background: none;
+.site-footer .wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
 }
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 38px;
-  height: 22px;
-}
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: .2s;
-  border-radius: 22px;
-}
-.slider:before {
-  position: absolute;
+
+/* --- Utilities (Optional) --- */
+.clearfix::after {
   content: "";
-  height: 16px;
-  width: 16px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: .2s;
-  border-radius: 50%;
+  display: table;
+  clear: both;
 }
-input:checked + .slider {
-  background-color: #007bff;
-}
-input:checked + .slider:before {
-  transform: translateX(16px);
-}
-.slider.round {
-  border-radius: 22px;
-}
-.slider.round:before {
-  border-radius: 50%;
-}
-#toggle-images-container {
-  margin-left: auto !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  float: right !important;
-}
+
